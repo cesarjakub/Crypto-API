@@ -26,7 +26,7 @@ $(document).ready(() => {
             },
             success: function (result) {
               console.log(result);
-              $("tbody").append(createCards(result.logo, result.name, result.symbol, result.rank, result.links.reddit));
+              $("tbody").append(createCards(result.logo, result.name, result.symbol, result.rank, result.links.youtube));
             },
             error: function (error) {
               console.log("Error");
