@@ -1,5 +1,8 @@
 $(document).ready(() => {
-
+    $(".alert").css("visibility","hidden");
+    $(".alert-link").click(function() {
+      location.reload();
+    });
     function createCards(img, name, symbol, rank, link){
       let text = `
         <tr>
@@ -30,6 +33,7 @@ $(document).ready(() => {
             },
             error: function (error) {
               console.log("Error");
+              $(".alert").css("visibility","visible");
               $("main").css("visibility","hidden");
             },
         });
@@ -47,6 +51,8 @@ $(document).ready(() => {
       getCryptoByID("okb-okb");
       getCryptoByID("doge-dogecoin");
     }
+
+    
 
     getTopTen();
 });
