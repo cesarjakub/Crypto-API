@@ -1,10 +1,13 @@
 $(document).ready(() => {
+    let ids = ["btc-bitcoin","eth-ethereum","usdt-tether","usdc-usd-coin","bnb-binance-coin","hex-hex","xrp-xrp","ada-cardano","okb-okb","doge-dogecoin"];
     $(".er").css("display","none");
     $(".alert-link").click(function() {
       location.reload();
     });
-    let load = `<button class="btn btn-primary" type="button" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...</button>`
-    $(".load").html(load);
+    let load = `<div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>`
+    $(".load").append(load);
     $(".waiting").css("display","none");
     function createTable(img, name, symbol, rank, link){
       let text = `
@@ -47,27 +50,20 @@ $(document).ready(() => {
               $("tbody").append(createTable(result.logo, result.name, result.symbol, result.rank, result.links.youtube));
               $(".modals").append(getMoreInfo(result.name, result.description));
               $(".waiting").css("display","block");
-              $(".load").css("display","none");
+              $(".load").css("visibility","hidden");
             },
             error: function (error) {
               console.log("Error");
               $(".er").css("display","block");
-              $("main").css("visibility","hidden");
+              $("main").css("display","none");
             },
         });
     }
 
     function getTopTen(){
-      getCryptoByID("btc-bitcoin");
-      getCryptoByID("eth-ethereum");
-      getCryptoByID("usdt-tether");
-      getCryptoByID("usdc-usd-coin");
-      getCryptoByID("bnb-binance-coin");
-      getCryptoByID("hex-hex");
-      getCryptoByID("xrp-xrp");
-      getCryptoByID("ada-cardano");
-      getCryptoByID("okb-okb");
-      getCryptoByID("doge-dogecoin");
+      for(let i = 0; i < ids.length; i++){
+        getCryptoByID(ids[i]);
+      }
     }
 
     getTopTen();
