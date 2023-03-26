@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    $(".alert").css("visibility","hidden");
+    $(".alert").css("display","none");
     $(".alert-link").click(function() {
       location.reload();
     });
@@ -10,14 +10,9 @@ $(document).ready(() => {
         <td>${name}</td>
         <td>${symbol}</td>
         <td>${rank}</td>
-        <td><a href="${link}" class="btn btn-primary" target=”_blank”>See more</a></td>
+        <td><a href="${link}" class="btn btn-primary " role="button" target=”_blank”>See more</a></td>
         </tr>`;
     return text;
-    }
-
-    function carouselCards(){
-      let text = ``;
-      return text;
     }
 
     function getCryptoByID(id){
@@ -33,7 +28,7 @@ $(document).ready(() => {
             },
             error: function (error) {
               console.log("Error");
-              $(".alert").css("visibility","visible");
+              $(".alert").css("display","block");
               $("main").css("visibility","hidden");
             },
         });
