@@ -3,6 +3,9 @@ $(document).ready(() => {
     $(".alert-link").click(function() {
       location.reload();
     });
+    let load = `<button class="btn btn-primary" type="button" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...</button>`
+    $(".load").html(load);
+    $(".waiting").css("display","none");
     function createTable(img, name, symbol, rank, link){
       let text = `
         <tr>
@@ -43,6 +46,8 @@ $(document).ready(() => {
               console.log(result);
               $("tbody").append(createTable(result.logo, result.name, result.symbol, result.rank, result.links.youtube));
               $(".modals").append(getMoreInfo(result.name, result.description));
+              $(".waiting").css("display","block");
+              $(".load").css("display","none");
             },
             error: function (error) {
               console.log("Error");
